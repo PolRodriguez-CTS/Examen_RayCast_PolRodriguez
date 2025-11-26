@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     public static ChangeScene Instance {get; private set;}
-
     public int sceneNumber;
 
     void Awake()

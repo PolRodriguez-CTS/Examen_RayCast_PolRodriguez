@@ -14,19 +14,12 @@ public class RayCast : MonoBehaviour
         _mouseAction = InputSystem.actions["RayCast"];
     }
 
-
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         _mousePosition = _mouseAction.ReadValue<Vector2>();
 
         if(_clickAction.WasPressedThisFrame() && !_isCounting)
         {
-            Debug.Log("Click");
             ShootRaycast();
         }
     }
@@ -40,7 +33,7 @@ public class RayCast : MonoBehaviour
         if(Physics.Raycast(ray, out hit, Mathf.Infinity))
         { 
             Countdown _countdownScript = FindAnyObjectByType<Countdown>().GetComponent<Countdown>();  
-            
+
             if(hit.transform.gameObject.CompareTag("Cubo 1"))
             {
                 _isCounting = true;
@@ -49,7 +42,6 @@ public class RayCast : MonoBehaviour
                 Debug.Log("Cubo1, escena 1");
 
                 //Empieza contador
-                //Countdown _countdownScript = FindAnyObjectByType<Countdown>().GetComponent<Countdown>();
                 StartCoroutine(_countdownScript.CountDelay());
             }
             
@@ -61,7 +53,6 @@ public class RayCast : MonoBehaviour
                 Debug.Log("Esfera, escena 2");
 
                 //Empieza contador
-                //Countdown _countdownScript = FindAnyObjectByType<Countdown>().GetComponent<Countdown>();
                 StartCoroutine(_countdownScript.CountDelay());
             }
 
@@ -73,7 +64,6 @@ public class RayCast : MonoBehaviour
                 Debug.Log("Cubo2, escena 3");
                 
                 //Empieza contador
-                //Countdown _countdownScript = FindAnyObjectByType<Countdown>().GetComponent<Countdown>();
                 StartCoroutine(_countdownScript.CountDelay());
             }
         }
