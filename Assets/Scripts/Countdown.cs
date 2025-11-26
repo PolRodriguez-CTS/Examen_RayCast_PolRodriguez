@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Countdown : MonoBehaviour
 {
     public Text _countdowText;
-    float countDownDelay = 1f;
+    float countDownDelay = 0.75f;
 
     /*public void SetCountDown()
     {
@@ -23,10 +23,10 @@ public class Countdown : MonoBehaviour
             StartCoroutine(CountDelay());
         }
     }*/
-    public void ChangingScene(string sceneName)
+    /*public void ChangingScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-    }
+    }*/
 
     public IEnumerator CountDelay()
     {
@@ -37,10 +37,11 @@ public class Countdown : MonoBehaviour
             if(i <= 0)
             {
                 Debug.Log("Contador completado");
-
+                ChangeScene.Instance.ChangingScene();
             }
 
             yield return new WaitForSeconds(countDownDelay);
         }
+        yield return new WaitForSeconds(countDownDelay);
     }
 }

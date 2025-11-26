@@ -39,28 +39,42 @@ public class RayCast : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity))
         { 
+            Countdown _countdownScript = FindAnyObjectByType<Countdown>().GetComponent<Countdown>();  
+            
             if(hit.transform.gameObject.CompareTag("Cubo 1"))
             {
                 _isCounting = true;
+                ChangeScene.Instance.sceneNumber = 0;
 
-                Debug.Log("Has clicado cubo 1");
-                Debug.Log("Cambio a escena 1");
+                Debug.Log("Cubo1, escena 1");
 
                 //Empieza contador
-                Countdown _countdownScript = FindAnyObjectByType<Countdown>().GetComponent<Countdown>();
+                //Countdown _countdownScript = FindAnyObjectByType<Countdown>().GetComponent<Countdown>();
                 StartCoroutine(_countdownScript.CountDelay());
             }
             
             if(hit.transform.gameObject.CompareTag("Esfera"))
             {
-                Debug.Log("Has clicado esfera");
-                Debug.Log("Cambio a escena 3");
+                _isCounting = true;
+                ChangeScene.Instance.sceneNumber = 1;
+
+                Debug.Log("Esfera, escena 2");
+
+                //Empieza contador
+                //Countdown _countdownScript = FindAnyObjectByType<Countdown>().GetComponent<Countdown>();
+                StartCoroutine(_countdownScript.CountDelay());
             }
 
             if(hit.transform.gameObject.CompareTag("Cubo 2"))
             {
-                Debug.Log("Has clicado cubo 2");
-                Debug.Log("Cambio a escena 3");
+                _isCounting = true;
+                ChangeScene.Instance.sceneNumber = 2;
+
+                Debug.Log("Cubo2, escena 3");
+                
+                //Empieza contador
+                //Countdown _countdownScript = FindAnyObjectByType<Countdown>().GetComponent<Countdown>();
+                StartCoroutine(_countdownScript.CountDelay());
             }
         }
     }

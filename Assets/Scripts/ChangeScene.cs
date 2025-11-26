@@ -3,8 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    public void ChangingScene(string sceneName)
+    public static ChangeScene Instance {get; private set;}
+
+    public int sceneNumber;
+
+    void Awake()
     {
-        SceneManager.LoadScene(sceneName);
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+
+        if(Instance != null && this != null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void ChangingScene()
+    {
+        SceneManager.LoadScene(sceneNumber);
     }
 }
