@@ -1,26 +1,16 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Countdown : MonoBehaviour
 {
     public Text _countdowText;
-    //float i = 5;
+    float countDownDelay = 1f;
 
-    float countDownDelay = 0.5f;
-
-    // Update is called once per frame
-    void Update()
+    /*public void SetCountDown()
     {
-    }
-
-    void FixedUpdate()
-    {
-        SetCountDown();
-    }
-
-    void SetCountDown()
-    {
+        StartCoroutine(CountDelay());
         for (int i = 5; i >= 0; i--)
         {
             _countdowText.text = i.ToString();
@@ -32,10 +22,25 @@ public class Countdown : MonoBehaviour
             }
             StartCoroutine(CountDelay());
         }
+    }*/
+    public void ChangingScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
-    IEnumerator CountDelay()
+    public IEnumerator CountDelay()
     {
-        yield return new WaitForSeconds(countDownDelay);
+        for (int i = 5; i >= 0; i--)
+        {
+            _countdowText.text = i.ToString();
+            
+            if(i <= 0)
+            {
+                Debug.Log("Contador completado");
+
+            }
+
+            yield return new WaitForSeconds(countDownDelay);
+        }
     }
 }
